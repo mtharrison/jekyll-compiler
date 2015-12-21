@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compiler</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .half {
+            background: #ccc;
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+        .half textarea {
+            background: transparent;
+            outline: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="half">
+        <h2>Input</h2>
+        <textarea id="input"></textarea>
+    </div>
+    <div class="half">
+        <h2>Output</h2>
+        <textarea id="output"></textarea>
+    </div>
+
+    <script>
+
+        var compiler = require('./compiler');
+
+        var input = document.getElementById('input');
+
+        input.addEventListener('keyup', function () {
+
+            var content = input.value;
+            compiler(content).then(function (output) {
+
+                document.getElementById('output').value = output;
+            });
+        });
+
+    </script>
+</body>
+</html>
